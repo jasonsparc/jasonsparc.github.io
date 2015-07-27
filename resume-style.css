@@ -25,6 +25,10 @@ html, body {
 	font-kerning: normal; /* Safari 7+, Firefox 24+, Chrome 33(?)+, Opera 21+*/
 }
 
+* {
+	max-height: 999999px;
+}
+
 @media print {
 	html, body {
 		/* Disable typographic ligatures to allow copy-pasting */
@@ -36,7 +40,11 @@ html, body {
 html, body, iframe, ul, ol { margin: 0; padding: 0; }
 iframe { border: none; display: block; }
 
-a { color: #0097A7; text-decoration: none; }
+a {
+	color: #0097A7;
+	text-decoration: none;
+	-webkit-tap-highlight-color: rgba(0,0,0,.1);
+}
 a:hover { text-decoration: underline; }
 
 p { margin: 1em 0; }
@@ -90,6 +98,10 @@ iframe, .paper {
 
 .pdf-download .pdf-button:hover {
 	background-color: #4DD0E1;
+}
+
+.pdf-download a {
+	-webkit-tap-highlight-color: transparent;
 }
 
 @media print {
@@ -179,9 +191,7 @@ iframe, .paper {
 .main {
 	background-color: #FFF;
 	position: relative;
-	-webkit-flex: 1; /* Safari 6.1+ */
-	-ms-flex: 1; /* IE 10 */ 
-	flex: 1;
+	-webkit-flex: 1; /* Safari 6.1+ */ -ms-flex: 1; /* IE 10 */ flex: 1;
 }
 
 .flex {
@@ -203,15 +213,14 @@ iframe, .paper {
 
 .main.flex>.mainbar {
 	box-sizing: border-box;
-	-webkit-flex: 1; /* Safari 6.1+ */
-	-ms-flex: 1; /* IE 10 */ 
-	flex: 1;
+	-webkit-flex: 1; /* Safari 6.1+ */ -ms-flex: 1; /* IE 10 */ flex: 1;
 }
 
 .main.flex>.sidebar {
 	background: #0097A7;
 	color: #FFF;
 	width: 3.2in;
+	overflow: hidden;
 }
 
 section.pts-line {
@@ -219,6 +228,7 @@ section.pts-line {
 	padding-bottom: 1px;
 	border-left: 0.05in solid #0097A7;
 	position: relative;
+	overflow: hidden;
 }
 
 section.pts-line>span:first-child,
@@ -254,6 +264,10 @@ section.bottom-note>span:first-child {
 	border-right: 0.05in solid #CFD8DC;
 }
 
+section.pts-line>span:first-child {
+	/*padding-left: 0.25in;*//*margin-left: -0.05in;*/
+}
+
 section.pts-line>.entry {
 	margin: 1.3em 0.2in 1.3em;
 }
@@ -286,9 +300,7 @@ section.pts-line>.entry .subtitle {
 	color: rgba(84, 110, 122, 0.75); /* #546E7A */
 }
 
-section.pts-line>.entry .details ul {
-	
-}
+section.pts-line>.entry .details ul {}
 
 section.pts-line>.entry .colored {
 	color: #0097A7;
@@ -296,13 +308,14 @@ section.pts-line>.entry .colored {
 
 .main.flex>.sidebar>section>span:first-child,
 ul.skills>li>span:first-child {
-	border-left: 0.05in solid;
+	border-left: 0.1in solid;
+	margin-left: -0.05in;
 	border-right: 0.1in solid #607D8B;
 }
 
 .main.flex>.sidebar>section>span:first-child {
 	background-color: #455A64;
-	min-width: 1.3in;
+	min-width: 1.35in;
 	margin-bottom: 0.15in;
 }
 
@@ -384,15 +397,15 @@ ul.skills>li li del {
 }
 
 @media screen {
-	ul.skills>li li del {
-		opacity: 0;
-	}
+	ul.skills>li li del { opacity: 0; }
 }
 
 section.bottom-note {
 	background: #ECEFF1;
-	position: relative;
-	box-sizing: border-box;
+	position: absolute;
+	left: 0; right: 0;
+	bottom: 0;
+	overflow: hidden;
 }
 
 section.bottom-note>span:first-child {
@@ -402,27 +415,20 @@ section.bottom-note>span:first-child {
 	border-right-width: 0.07in;
 }
 
-section.bottom-note::before {
-	content: '';
-	position: absolute;
-	top: 0;
-	left: 0;
-	right: 0;
-	border-top: 0.07in solid #CFD8DC;
-}
-
+section.bottom-note::before,
 section.bottom-note::after {
 	content: '';
-	width: 3.1in;
 	position: absolute;
 	top: 0;
 	right: 0;
-	border-top: 0.07in solid #607D8B;
+	border-top: 0.14in solid #CFD8DC;
+	margin-top: -0.07in;
 }
 
-section.bottom-note a {
-	color: #0097A7;
-}
+section.bottom-note::before { left: 0; }
+section.bottom-note::after { width: 3.1in; border-top-color: #607D8B; }
+
+section.bottom-note a { color: #0097A7; }
 
 section.bottom-note .flex {
 	position: relative;
@@ -441,9 +447,7 @@ section.bottom-note .entry {
 }
 
 section.bottom-note .entry.stretch {
-	-webkit-flex: 1;
-	-ms-flex: 1;
-	flex: 1;
+	-webkit-flex: 1; -ms-flex: 1; flex: 1;
 }
 
 section.bottom-note .flex>.entry+.entry {
@@ -461,12 +465,13 @@ section.bottom-note .entry .title {
 
 section.bottom-note .entry>.title,
 section.bottom-note .entry>.details>.title:first-child {
-	border-left: 0.1in solid #ECEFF1;
+	border-left: 0.2in solid #ECEFF1;
+	margin-left: -0.1in;
 	padding-left: 0.05in;
 }
 
 section.bottom-note .entry>.details>.title:first-child {
-	margin-left: -0.1in;
+	margin-left: -0.2in;
 }
 
 .no-transform, ul.skills li.no-transform>span {
