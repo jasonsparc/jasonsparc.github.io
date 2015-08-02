@@ -49,17 +49,16 @@ a:hover { text-decoration: underline; }
 
 p { margin: 1em 0; }
 ul, ol { padding-left: 1.5em; }
+p.caption { margin-bottom: 0.5em; }
 
-p.caption {
-	margin-bottom: 0.5em;
-}
+.note, .sidenote { color: rgba(84, 110, 122, 0.75); }
+.note:not(small), .sidenote { font-size: 0.9em; }
 
-.note {
-	color: rgba(84, 110, 122, 0.75);
-}
-
-.note:not(small) {
-	font-size: 0.9em;
+.sidenote {
+	position: absolute;
+	top: 0.25in; right: 0.3in;
+	border-right: 0.03in solid #CFD8DC;
+	padding: 0.06in 0.09in; text-align: right;
 }
 
 iframe, .paper {
