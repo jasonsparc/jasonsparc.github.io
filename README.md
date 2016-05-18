@@ -1,4 +1,4 @@
-My printable html-doc resume, http://jason-sparc.github.io/  
+My printable html-doc resume, http://jasonsparc.github.io/  
 PDF-printable via Chrome's print menu!
 
-Downloadable also as a pre-printed PDF document, http://jason-sparc.github.io/jasonsparc.pdf
+Downloadable also as a pre-printed PDF document, http://jasonsparc.github.io/jasonsparc.pdf
